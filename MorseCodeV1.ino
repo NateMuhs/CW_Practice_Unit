@@ -1,30 +1,27 @@
 #include <LiquidCrystal.h>
 
-#define KEY 8  // Morse key from pin 7 to GND
-#define BUZZER 9   // Buzzer key from pin 8 to GND
-#define BUTTON_UP 10
-#define BUTTON_DOWN 11
-#define BUTTON_LEFT 12
-#define BUTTON_RIGHT 13
+const int KEY = 8; 
+const int BUZZER = 9;  
+const int AUX_TIP = 10;
+const int AUX_RING = 11;
 
 // Length and width of the LCD
-#define NUM_COLUMN 16
-#define NUM_ROW 2
-
-// RS, E, D4, D5, D6, D7
-LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
+const int LCD_RS = 2, LCD_E = 3, LCD_D4 = 4, LCD_D5 = 5, LCD_D6 = 6, LCD_D7 = 7;
+const int NUM_COLUMN = 16;
+const int NUM_ROW = 2;
+LiquidCrystal lcd(LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7);
 
 void setup() {
-  pinMode(KEY, INPUT_PULLUP); // Set Morse key to input
-  pinMode(BUZZER, OUTPUT); // Set Buzzer to output
-  Serial.begin(115200); // Sets the speed of comunications with serial
-  lcd.begin(NUM_COLUMN, NUM_ROW);   // Sets the size of the LCD being used
-
-  //Buttons
-  pinMode(BUTTON_UP, INPUT_PULLUP);
-  pinMode(BUTTON_DOWN, INPUT_PULLUP);
-  pinMode(BUTTON_LEFT, INPUT_PULLUP);
-  pinMode(BUTTON_RIGHT, INPUT_PULLUP);
+  Serial.begin(115200);
+  
+  // Set pin modes
+  pinMode(KEY, INPUT_PULLUP);
+  pinMode(BUZZER, OUTPUT);
+  pinMode(AUX_TIP, INPUT_PULLUP);
+  pinMode(AUX_RING, INPUT_PULLUP);
+  
+  // Initialize LCD
+  lcd.begin(NUM_COLUMN, NUM_ROW);
 }
 
 //Values to be eddited later in development
